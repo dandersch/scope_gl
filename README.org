@@ -1,0 +1,20 @@
+#+TITLE: scope_gl.h
+
+Single header C/C++ library that wraps common state-changing OpenGL calls into
+scope macros of the form ~scope_gl..(new_state)~ that push new state when entering
+the opening scope and restore old state when exiting the scope.
+
+This can be useful to avoid state leaks and localize all state changes before a
+drawcall:
+
+#+begin_src C
+scope_glUseProgram(toonshader)
+ scope_glBindTexture2D(spritesheet)
+  scope_glEnable(GL_BLEND)
+   scope_glBlendFunc(GL_ONE, GL_SRC_ALPHA)
+    // ...
+     scope_glClearColor(0,0,0,0)
+{
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+}
+#+end_src
