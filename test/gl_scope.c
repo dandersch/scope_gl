@@ -1,6 +1,7 @@
 #include "common.h"
 #include "pch.h"
 
+#define SCOPE_GL_RESTORE_STATE
 #include "../scope_gl.h"
 
 void GLAPIENTRY gl_debug_callback(GLenum source, GLenum type, GLuint id,
