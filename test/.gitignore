@@ -7,3 +7,4 @@ main.exe
 *.ilk
 *.pdb
 *.obj
+*.pch
